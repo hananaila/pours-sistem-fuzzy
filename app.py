@@ -1,5 +1,15 @@
 from flask import Flask, request, jsonify, render_template
 import os
+import sys
+try:
+    import distutils.version
+except ImportError:
+    try:
+        import setuptools.distutils as distutils
+        sys.modules['distutils'] = distutils
+    except ImportError:
+        pass
+
 import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
