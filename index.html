@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
-    /* Pages & Pours — Premium Fuzzy Aesthetic */
+    /* Pages & Pours */
     :root {
       --cream: #FDF8F0;
       --cream-dark: #F5EDD8;
@@ -97,7 +97,9 @@
       letter-spacing: -1.5px;
     }
 
-    .text-highlight { color: var(--accent); }
+    .text-highlight {
+      color: var(--accent);
+    }
 
     /* ── Main Layout ── */
     .main-card {
@@ -113,10 +115,10 @@
     /* ── Sliders ── */
     .control-group {
       margin-bottom: 1.8rem;
-      background: rgba(255,255,255,0.5);
+      background: rgba(255, 255, 255, 0.5);
       padding: 1.2rem;
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(196,164,132,0.2);
+      border: 1px solid rgba(196, 164, 132, 0.2);
     }
 
     .label-wrap {
@@ -162,21 +164,36 @@
       display: none;
     }
 
-    .degree-bar-wrap { margin-bottom: 1.2rem; }
+    .degree-bar-wrap {
+      margin-bottom: 1.2rem;
+    }
+
     .degree-label-wrap {
       display: flex;
       justify-content: space-between;
       margin-bottom: 4px;
     }
-    .degree-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
-    .degree-pct { font-size: 0.75rem; font-weight: 700; color: var(--accent); }
-    
+
+    .degree-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .degree-pct {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
     .progress-custom {
       height: 8px;
       border-radius: 99px;
       background: #F0EDE6;
       overflow: hidden;
     }
+
     .progress-bar-custom {
       height: 100%;
       background: linear-gradient(to right, var(--accent-light), var(--accent));
@@ -195,9 +212,28 @@
       margin-top: 0;
       margin-bottom: 24px;
     }
-    .price-subtitle { font-size: 0.9rem; font-weight: 600; opacity: 0.8; letter-spacing: 1px; margin-bottom: 0.5rem; }
-    .price-main { font-size: 4rem; font-weight: 900; letter-spacing: -2px; line-height: 1; margin-bottom: 0.5rem; }
-    .price-label { font-size: 1.2rem; font-weight: 700; color: #FFD966; }
+
+    .price-subtitle {
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0.8;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-main {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #FFD966;
+    }
 
     /* ── Button ── */
     .btn-calculate {
@@ -213,19 +249,41 @@
       transition: all 0.3s;
       margin-top: 1rem;
     }
-    .btn-calculate:hover { transform: translateY(-3px); box-shadow: 0 18px 32px rgba(122, 146, 106, 0.4); }
 
-    .animate-up { animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    .btn-calculate:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 32px rgba(122, 146, 106, 0.4);
+    }
+
+    .animate-up {
+      animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     /* ── Footer ── */
     .footer {
       background: linear-gradient(135deg, var(--cream-dark), var(--cream));
-      border-top: 1px solid rgba(196,164,132,0.3);
+      border-top: 1px solid rgba(196, 164, 132, 0.3);
       color: var(--text-mid);
       padding: 1.5rem 0;
     }
-    .footer p { font-size: 0.85rem; font-weight: 500; margin: 0; }
+
+    .footer p {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -238,7 +296,8 @@
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto gap-1">
-          <li class="nav-item"><a class="nav-link active" href="/"><i class="fas fa-chart-line me-1"></i>Fuzzy Restock</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/"><i class="fas fa-chart-line me-1"></i>Fuzzy
+              Restock</a></li>
         </ul>
       </div>
     </div>
@@ -251,7 +310,8 @@
       </div>
       <h1 class="fw-bold display-5 mb-2">Urgensi Restock <span class="text-highlight">Bahan Baku</span></h1>
       <p class="fw-light lead mx-auto" style="max-width:600px;">
-        AI Penentu prioritas pemesanan barang ke supplier secara logis dengan logika Mamdani 4 Variabel untuk manajemen gudang Pages & Pours.
+        AI Penentu prioritas pemesanan barang ke supplier secara logis dengan logika Mamdani 4 Variabel untuk manajemen
+        gudang Pages & Pours.
       </p>
     </div>
   </header>
@@ -267,7 +327,8 @@
             <div class="label-wrap">
               <label class="control-label"><i class="fas fa-tag me-2"></i>Nama Barang</label>
             </div>
-            <input type="text" class="form-control" id="inputBarang" placeholder="Contoh: Biji Kopi, Gula, Susu..." style="border-radius:12px; border:2px solid rgba(196,164,132,0.4); padding:10px 16px; font-weight:500; color:var(--text-dark);">
+            <input type="text" class="form-control" id="inputBarang" placeholder="Contoh: Biji Kopi, Gula, Susu..."
+              style="border-radius:12px; border:2px solid rgba(196,164,132,0.4); padding:10px 16px; font-weight:500; color:var(--text-dark);">
           </div>
 
           <!-- Input 1 -->
@@ -287,7 +348,8 @@
             <div class="d-flex justify-content-between align-items-center mb-2">
               <label class="control-label mb-0"><i class="fas fa-chart-bar me-2"></i>Permintaan</label>
               <div class="d-flex align-items-center gap-2">
-                <select id="selectSatuan" class="form-select form-select-sm" style="width:auto; border-radius:8px; border: 1px solid rgba(196,164,132,0.4); font-size:0.8rem; font-weight:600; padding: 2px 24px 2px 8px; cursor:pointer;">
+                <select id="selectSatuan" class="form-select form-select-sm"
+                  style="width:auto; border-radius:8px; border: 1px solid rgba(196,164,132,0.4); font-size:0.8rem; font-weight:600; padding: 2px 24px 2px 8px; cursor:pointer;">
                   <option value="Kg">Kg</option>
                   <option value="Liter">Liter</option>
                   <option value="Pcs">Pcs</option>
@@ -340,7 +402,8 @@
             <div class="price-label mt-3" id="labelFinal">Siap Menganalisis</div>
           </div>
           <p class="text-center mt-3 mb-5 text-muted small" style="line-height:1.6;">
-            Sistem menganalisis interaksi kompleks 4 variabel gudang untuk mencegah overstock maupun kehabisan barang di Pages & Pours.
+            Sistem menganalisis interaksi kompleks 4 variabel gudang untuk mencegah overstock maupun kehabisan barang di
+            Pages & Pours.
           </p>
 
           <!-- Analysis Section -->
@@ -348,10 +411,11 @@
             <div class="analysis-title text-center mb-3 fw-bold" style="color:var(--text-dark); font-size:1.1rem;">
               <i class="fas fa-eye me-2"></i> Detail Analisis Logika Fuzzy
             </div>
-            
+
             <div class="mb-4">
               <p class="small fw-bold text-muted mb-2 text-center">DERAJAT OUTPUT (URGENSI)</p>
-              <div style="background:white; padding: 1.5rem; border-radius:16px; border:1px solid rgba(196,164,132,0.2); box-shadow: 0 10px 30px rgba(139,90,43,0.05);">
+              <div
+                style="background:white; padding: 1.5rem; border-radius:16px; border:1px solid rgba(196,164,132,0.2); box-shadow: 0 10px 30px rgba(139,90,43,0.05);">
                 <div id="degreesResult"></div>
               </div>
             </div>
@@ -399,10 +463,10 @@
 
   <script>
     const el = (id) => document.getElementById(id);
-    
+
     // Sliders
     el('slStok').oninput = (e) => el('valStok').textContent = e.target.value + '%';
-    
+
     const updatePermintaan = () => {
       let val = el('slPermintaan').value;
       let unit = el('selectSatuan').value;
@@ -410,10 +474,10 @@
     };
     el('slPermintaan').oninput = updatePermintaan;
     el('selectSatuan').onchange = updatePermintaan;
-    
+
     el('slPengiriman').oninput = (e) => el('valPengiriman').textContent = e.target.value + ' hari';
     el('slKedaluwarsa').oninput = (e) => el('valKedaluwarsa').textContent = e.target.value + ' hari';
-    
+
     // Init satuan
     updatePermintaan();
 
@@ -449,7 +513,7 @@
     function renderResults(data) {
       el('analysisUI').style.display = 'block';
       animateNumber('hargaFinal', data.persentase);
-      
+
       let namaBarang = el('inputBarang').value.trim().toUpperCase() || 'BARANG';
       let label = data.keterangan; // e.g. "Rendah (Belum Perlu)"
       label = label.replace(")", ` ${namaBarang})`); // Output: "Rendah (Belum Perlu GULA)"
@@ -503,4 +567,5 @@
     }
   </script>
 </body>
+
 </html>
