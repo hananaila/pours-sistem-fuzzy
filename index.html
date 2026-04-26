@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management Fuzzy | Pages & Pours</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Pages & Pours — Premium Fuzzy Aesthetic */
+    :root {
+      --cream: #FDF8F0;
+      --cream-dark: #F5EDD8;
+      --coklat-muda: #C4A484;
+      --hijau-sage: #A3B18A;
+      --hijau-dark: #7A926A;
+      --accent: #8B5A2B;
+      --accent-light: #B07848;
+      --accent-dark: #5C3A1A;
+      --putih: #FFFFFF;
+      --text-dark: #2C1A0E;
+      --text-mid: #5A3E2B;
+      --text-muted: #9E8A78;
+      --glass-bg: rgba(255, 255, 255, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.4);
+      --shadow-premium: 0 20px 40px rgba(44, 26, 14, 0.08);
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+    }
+
+    body {
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 10% -10%, rgba(163, 177, 138, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 90% 110%, rgba(139, 90, 43, 0.12) 0%, transparent 60%);
+      color: var(--text-dark);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: var(--glass-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 4px 24px rgba(139, 90, 43, 0.08);
+      padding: 0.8rem 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      color: var(--accent) !important;
+      font-weight: 800;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge.bg-accent {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light)) !important;
+      font-size: 0.65rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    .nav-link {
+      color: var(--text-mid) !important;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 6px 14px !important;
+      border-radius: var(--radius-pill);
+    }
+
+    .nav-link.active {
+      color: var(--putih) !important;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      box-shadow: 0 4px 14px rgba(139, 90, 43, 0.35);
+    }
+
+    /* ── Hero section ── */
+    .hero-section {
+      padding: 40px 0 10px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-section h1 {
+      font-weight: 800;
+      font-size: 3rem;
+      letter-spacing: -1.5px;
+    }
+
+    .text-highlight { color: var(--accent); }
+
+    /* ── Main Layout ── */
+    .main-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-premium);
+      padding: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    /* ── Sliders ── */
+    .control-group {
+      margin-bottom: 1.8rem;
+      background: rgba(255,255,255,0.5);
+      padding: 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(196,164,132,0.2);
+    }
+
+    .label-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .control-label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .badge-value {
+      background: var(--accent);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .form-range {
+      height: 6px;
+      border-radius: 99px;
+      background: #E5E1D8;
+      cursor: pointer;
+    }
+
+    .form-range::-webkit-slider-thumb {
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border: 3px solid white;
+      border-radius: 50%;
+    }
+
+    /* ── Analysis Bars ── */
+    .analysis-section {
+      margin-top: 1.5rem;
+      display: none;
+    }
+
+    .degree-bar-wrap { margin-bottom: 1.2rem; }
+    .degree-label-wrap {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .degree-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
+    .degree-pct { font-size: 0.75rem; font-weight: 700; color: var(--accent); }
+    
+    .progress-custom {
+      height: 8px;
+      border-radius: 99px;
+      background: #F0EDE6;
+      overflow: hidden;
+    }
+    .progress-bar-custom {
+      height: 100%;
+      background: linear-gradient(to right, var(--accent-light), var(--accent));
+      width: 0%;
+      transition: width 1s ease;
+    }
+
+    /* ── Price Display ── */
+    .price-card {
+      background: linear-gradient(145deg, var(--accent-dark), var(--accent));
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      color: white;
+      box-shadow: 0 20px 40px rgba(92, 58, 26, 0.3);
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+    .price-subtitle { font-size: 0.9rem; font-weight: 600; opacity: 0.8; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .price-main { font-size: 4rem; font-weight: 900; letter-spacing: -2px; line-height: 1; margin-bottom: 0.5rem; }
+    .price-label { font-size: 1.2rem; font-weight: 700; color: #FFD966; }
+
+    /* ── Button ── */
+    .btn-calculate {
+      background: var(--hijau-dark);
+      color: white;
+      padding: 16px 30px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border: none;
+      width: 100%;
+      box-shadow: 0 12px 24px rgba(122, 146, 106, 0.3);
+      transition: all 0.3s;
+      margin-top: 1rem;
+    }
+    .btn-calculate:hover { transform: translateY(-3px); box-shadow: 0 18px 32px rgba(122, 146, 106, 0.4); }
+
+    .animate-up { animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Footer ── */
+    .footer {
+      background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+      border-top: 1px solid rgba(196,164,132,0.3);
+      color: var(--text-mid);
+      padding: 1.5rem 0;
+    }
+    .footer p { font-size: 0.85rem; font-weight: 500; margin: 0; }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="fas fa-boxes"></i> Pages &amp; Pours <span class="badge bg-accent">Inventory AI</span>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link active" href="/"><i class="fas fa-chart-line me-1"></i>Fuzzy Restock</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section text-center">
+    <div class="container py-2">
+      <div class="mb-3">
+        <i class="fas fa-truck-loading fa-2x" style="color: var(--accent);"></i>
+      </div>
+      <h1 class="fw-bold display-5 mb-2">Urgensi Restock <span class="text-highlight">Bahan Baku</span></h1>
+      <p class="fw-light lead mx-auto" style="max-width:600px;">
+        AI Penentu prioritas pemesanan barang ke supplier secara logis dengan logika Mamdani 4 Variabel untuk manajemen gudang Pages & Pours.
+      </p>
+    </div>
+  </header>
+
+  <main class="container" style="max-width: 900px;">
+    <div class="main-card animate-up">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-4" style="color:var(--accent);">Kondisi Gudang</h4>
+
+          <!-- Input Barang -->
+          <div class="control-group">
+            <div class="label-wrap">
+              <label class="control-label"><i class="fas fa-tag me-2"></i>Nama Barang</label>
+            </div>
+            <input type="text" class="form-control" id="inputBarang" placeholder="Contoh: Biji Kopi, Gula, Susu..." style="border-radius:12px; border:2px solid rgba(196,164,132,0.4); padding:10px 16px; font-weight:500; color:var(--text-dark);">
+          </div>
+
+          <!-- Input 1 -->
+          <div class="control-group">
+            <div class="label-wrap">
+              <label class="control-label"><i class="fas fa-box-open me-2"></i>Sisa Stok</label>
+              <span class="badge-value" id="valStok">50%</span>
+            </div>
+            <input type="range" class="form-range" id="slStok" min="0" max="100" value="50">
+            <div class="d-flex justify-content-between mt-1 text-muted" style="font-size:0.7rem; font-weight:600;">
+              <span>SEDIKIT</span><span>BANYAK</span>
+            </div>
+          </div>
+
+          <!-- Input 2 -->
+          <div class="control-group">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label class="control-label mb-0"><i class="fas fa-chart-bar me-2"></i>Permintaan</label>
+              <div class="d-flex align-items-center gap-2">
+                <select id="selectSatuan" class="form-select form-select-sm" style="width:auto; border-radius:8px; border: 1px solid rgba(196,164,132,0.4); font-size:0.8rem; font-weight:600; padding: 2px 24px 2px 8px; cursor:pointer;">
+                  <option value="Kg">Kg</option>
+                  <option value="Liter">Liter</option>
+                  <option value="Pcs">Pcs</option>
+                  <option value="Cup">Cup</option>
+                  <option value="Pack">Pack</option>
+                </select>
+                <span class="badge-value" id="valPermintaan">50 Kg/hari</span>
+              </div>
+            </div>
+            <input type="range" class="form-range" id="slPermintaan" min="0" max="100" value="50">
+            <div class="d-flex justify-content-between mt-1 text-muted" style="font-size:0.7rem; font-weight:600;">
+              <span>SEPI</span><span>RAMAI</span>
+            </div>
+          </div>
+
+          <!-- Input 3 -->
+          <div class="control-group">
+            <div class="label-wrap">
+              <label class="control-label"><i class="fas fa-shipping-fast me-2"></i>Lead Time Supplier</label>
+              <span class="badge-value" id="valPengiriman">7 hari</span>
+            </div>
+            <input type="range" class="form-range" id="slPengiriman" min="1" max="14" value="7">
+            <div class="d-flex justify-content-between mt-1 text-muted" style="font-size:0.7rem; font-weight:600;">
+              <span>CEPAT</span><span>LAMA</span>
+            </div>
+          </div>
+
+          <!-- Input 4 -->
+          <div class="control-group mb-4">
+            <div class="label-wrap">
+              <label class="control-label"><i class="fas fa-calendar-times me-2"></i>Sisa Umur Simpan</label>
+              <span class="badge-value" id="valKedaluwarsa">30 hari</span>
+            </div>
+            <input type="range" class="form-range" id="slKedaluwarsa" min="1" max="60" value="30">
+            <div class="d-flex justify-content-between mt-1 text-muted" style="font-size:0.7rem; font-weight:600;">
+              <span>KRITIS</span><span>JAUH</span>
+            </div>
+          </div>
+
+          <button class="btn-calculate" id="btnHitung">
+            <i class="fas fa-microchip me-2"></i> ANALISIS URGENSI
+          </button>
+        </div>
+
+        <div class="col-lg-6">
+          <h4 class="fw-bold mb-3" style="color:var(--accent);">Kesimpulan AI</h4>
+          <div class="price-card">
+            <div class="price-subtitle">TINGKAT KEBUTUHAN RESTOCK</div>
+            <div class="price-main"><span id="hargaFinal">0</span>%</div>
+            <div class="price-label mt-3" id="labelFinal">Siap Menganalisis</div>
+          </div>
+          <p class="text-center mt-3 mb-5 text-muted small" style="line-height:1.6;">
+            Sistem menganalisis interaksi kompleks 4 variabel gudang untuk mencegah overstock maupun kehabisan barang di Pages & Pours.
+          </p>
+
+          <!-- Analysis Section -->
+          <section class="analysis-section mt-3" id="analysisUI">
+            <div class="analysis-title text-center mb-3 fw-bold" style="color:var(--text-dark); font-size:1.1rem;">
+              <i class="fas fa-eye me-2"></i> Detail Analisis Logika Fuzzy
+            </div>
+            
+            <div class="mb-4">
+              <p class="small fw-bold text-muted mb-2 text-center">DERAJAT OUTPUT (URGENSI)</p>
+              <div style="background:white; padding: 1.5rem; border-radius:16px; border:1px solid rgba(196,164,132,0.2); box-shadow: 0 10px 30px rgba(139,90,43,0.05);">
+                <div id="degreesResult"></div>
+              </div>
+            </div>
+
+            <div>
+              <p class="small fw-bold text-muted mb-2 text-center">ANALISIS VARIABEL INPUT</p>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="p-3 bg-white" style="border-radius:12px; border:1px solid rgba(0,0,0,0.05);">
+                    <p class="x-small fw-bold mb-2 text-accent" style="font-size:0.7rem;">STOK</p>
+                    <div id="degStok"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="p-3 bg-white" style="border-radius:12px; border:1px solid rgba(0,0,0,0.05);">
+                    <p class="x-small fw-bold mb-2 text-accent" style="font-size:0.7rem;">PERMINTAAN</p>
+                    <div id="degPermintaan"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="p-3 bg-white" style="border-radius:12px; border:1px solid rgba(0,0,0,0.05);">
+                    <p class="x-small fw-bold mb-2 text-accent" style="font-size:0.7rem;">PENGIRIMAN</p>
+                    <div id="degPengiriman"></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="p-3 bg-white" style="border-radius:12px; border:1px solid rgba(0,0,0,0.05);">
+                    <p class="x-small fw-bold mb-2 text-accent" style="font-size:0.7rem;">KEDALUWARSA</p>
+                    <div id="degKedaluwarsa"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer text-center mt-5">
+    <div class="container">
+      <p>Responsi Kecerdasan Buatan &middot; Pages &amp; Pours &copy; 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    const el = (id) => document.getElementById(id);
+    
+    // Sliders
+    el('slStok').oninput = (e) => el('valStok').textContent = e.target.value + '%';
+    
+    const updatePermintaan = () => {
+      let val = el('slPermintaan').value;
+      let unit = el('selectSatuan').value;
+      el('valPermintaan').textContent = `${val} ${unit}/hari`;
+    };
+    el('slPermintaan').oninput = updatePermintaan;
+    el('selectSatuan').onchange = updatePermintaan;
+    
+    el('slPengiriman').oninput = (e) => el('valPengiriman').textContent = e.target.value + ' hari';
+    el('slKedaluwarsa').oninput = (e) => el('valKedaluwarsa').textContent = e.target.value + ' hari';
+    
+    // Init satuan
+    updatePermintaan();
+
+    // Calculate
+    el('btnHitung').onclick = async function () {
+      const btn = this;
+      btn.innerHTML = '<i class="fas fa-circle-notch fa-spin me-2"></i> MENGHITUNG...';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch('/api/fuzzy', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            stok: parseInt(el('slStok').value),
+            permintaan: parseInt(el('slPermintaan').value),
+            pengiriman: parseInt(el('slPengiriman').value),
+            kedaluwarsa: parseInt(el('slKedaluwarsa').value)
+          })
+        });
+
+        const data = await response.json();
+        renderResults(data);
+      } catch (err) {
+        console.error(err);
+        alert('Gagal mengambil data dari server. Pastikan Flask sedang berjalan.');
+      } finally {
+        btn.innerHTML = '<i class="fas fa-microchip me-2"></i> ANALISIS URGENSI';
+        btn.disabled = false;
+      }
+    };
+
+    function renderResults(data) {
+      el('analysisUI').style.display = 'block';
+      animateNumber('hargaFinal', data.persentase);
+      
+      let namaBarang = el('inputBarang').value.trim().toUpperCase() || 'BARANG';
+      let label = data.keterangan; // e.g. "Rendah (Belum Perlu)"
+      label = label.replace(")", ` ${namaBarang})`); // Output: "Rendah (Belum Perlu GULA)"
+      el('labelFinal').textContent = label;
+
+      // Render degrees output
+      el('degreesResult').innerHTML = generateBars(data.degrees.output);
+
+      // Render degrees inputs
+      el('degStok').innerHTML = generateBars(data.degrees.input.stok);
+      el('degPermintaan').innerHTML = generateBars(data.degrees.input.permintaan);
+      el('degPengiriman').innerHTML = generateBars(data.degrees.input.pengiriman);
+      el('degKedaluwarsa').innerHTML = generateBars(data.degrees.input.kedaluwarsa);
+
+      setTimeout(() => {
+        el('analysisUI').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 300);
+    }
+
+    function generateBars(degreeObj) {
+      let html = '';
+      for (let key in degreeObj) {
+        let val = degreeObj[key];
+        let pct = (val * 100).toFixed(1);
+        let label = key.toUpperCase();
+        html += `
+          <div class="degree-bar-wrap mb-2">
+            <div class="degree-label-wrap" style="margin-bottom:2px;">
+              <span class="degree-label" style="font-size:0.6rem;">${label}</span>
+              <span class="degree-pct" style="font-size:0.6rem;">${pct}%</span>
+            </div>
+            <div class="progress-custom" style="height:5px;">
+              <div class="progress-bar-custom" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }
+      return html;
+    }
+
+    function animateNumber(id, final) {
+      const e = document.getElementById(id);
+      let start = 0, duration = 1000, startTime = null;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        let progress = Math.min((timestamp - startTime) / duration, 1);
+        e.textContent = Math.floor(progress * final);
+        if (progress < 1) window.requestAnimationFrame(step);
+      }
+      window.requestAnimationFrame(step);
+    }
+  </script>
+</body>
+</html>
